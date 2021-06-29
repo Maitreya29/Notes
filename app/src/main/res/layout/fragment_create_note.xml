@@ -254,17 +254,17 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="90dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
             android:id="@+id/imgMore"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_gravity="center"
-            android:src="@drawable/img_bar" />
+            android:src="@drawable/settings" />
     </FrameLayout>
 
 
