@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment() {
         notesAdapter!!.setOnClickListener(onClicked)
 
         fabBtnCreateNote.setOnClickListener {
-            replaceFragment(CreateNoteFragment.newInstance(),false)
+            replaceFragment(CreateNoteFragment.newInstance(),true)
         }
 
         search_view.setOnQueryTextListener( object : SearchView.OnQueryTextListener{
@@ -115,7 +115,7 @@ class HomeFragment : BaseFragment() {
         val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
 
         if (istransition){
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            fragmentTransition.setCustomAnimations(R.anim.slide_out,R.anim.slide_out,R.anim.slide_in,R.anim.slide_in)
         }
         fragmentTransition.replace(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }

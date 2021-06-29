@@ -84,10 +84,10 @@
         android:background="@color/colorAccent"
         android:id="@+id/fabBtnCreateNote"
         android:tint="@color/ColorWhite"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginBottom="@dimen/_20sdp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         android:src="@drawable/ic_add"/>
 
 

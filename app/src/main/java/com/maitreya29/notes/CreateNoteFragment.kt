@@ -19,6 +19,7 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -133,7 +134,7 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
 
         imgBack.setOnClickListener {
-            requireActivity().supportFragmentManager.popBackStack()
+            replaceFragment(HomeFragment.newInstance(),true)
         }
 
         imgMore.setOnClickListener{
@@ -181,6 +182,11 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
 
     }
 
+    private fun closeSoftKeyboard(context: Context, v: View) {
+        val iMm = context.getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+        iMm.hideSoftInputFromWindow(v.windowToken, 0)
+        v.clearFocus()
+    }
 
     private fun updateNote(){
         launch {
@@ -203,7 +209,9 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 layoutImage.visibility = View.GONE
                 imgNote.visibility = View.GONE
                 tvWebLink.visibility = View.GONE
-                requireActivity().supportFragmentManager.popBackStack()
+                val imm = view?.let { it1 -> ContextCompat.getSystemService(it1.context, InputMethodManager::class.java) }
+                imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+                replaceFragment(HomeFragment.newInstance(),true)
             }
         }
     }
@@ -241,7 +249,9 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
                 layoutImage.visibility = View.GONE
                 imgNote.visibility = View.GONE
                 tvWebLink.visibility = View.GONE
-                requireActivity().supportFragmentManager.popBackStack()
+                val imm = view?.let { it1 -> ContextCompat.getSystemService(it1.context, InputMethodManager::class.java) }
+                imm?.hideSoftInputFromWindow(view?.windowToken, 0)
+                replaceFragment(HomeFragment.newInstance(),true)
             }
         }
         }
@@ -417,6 +427,14 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
         }
     }
 
+    fun replaceFragment(fragment:Fragment, istransition:Boolean){
+        val fragmentTransition = activity!!.supportFragmentManager.beginTransaction()
+
+        if (istransition){
+            fragmentTransition.setCustomAnimations(R.anim.slide_out,R.anim.slide_out,R.anim.slide_in,R.anim.slide_in)
+        }
+        fragmentTransition.replace(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
+    }
 
 
     override fun onRequestPermissionsResult(
@@ -449,3 +467,4 @@ class CreateNoteFragment : BaseFragment(),EasyPermissions.PermissionCallbacks,Ea
     }
 
 }
+

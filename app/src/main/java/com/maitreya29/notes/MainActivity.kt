@@ -19,7 +19,7 @@ class MainActivity : AppCompatActivity() {
         val fragmentTransition = supportFragmentManager.beginTransaction()
 
         if (istransition){
-            fragmentTransition.setCustomAnimations(android.R.anim.slide_out_right,android.R.anim.slide_in_left)
+            fragmentTransition.setCustomAnimations(R.anim.slide_out,R.anim.slide_out,R.anim.slide_in,R.anim.slide_in)
         }
         fragmentTransition.add(R.id.frame_layout,fragment).addToBackStack(fragment.javaClass.simpleName).commit()
     }
