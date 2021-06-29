@@ -40,7 +40,7 @@ class NoteBottomSheetFragment : BottomSheetDialogFragment() {
         if (behavior is BottomSheetBehavior<*>){
             behavior.setBottomSheetCallback(object  : BottomSheetBehavior.BottomSheetCallback(){
                 override fun onSlide(bottomSheet: View, slideOffset: Float) {
-                    TODO("Not yet implemented")
+                    dismiss()
                 }
 
                 override fun onStateChanged(bottomSheet: View, newState: Int) {
